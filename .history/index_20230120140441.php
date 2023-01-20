@@ -290,7 +290,7 @@
                   <div class="d-flex align-items-center">
                   <div class="col-sm-12">
                     <select class="form-select" id="icd10" aria-label="Default select example">
-                      
+                      <option value=""></option>
                     </select>
                   </div>
                   </div>
@@ -485,15 +485,11 @@
   $("#icd10").select2({
       ajax: { 
           url: "icd10.php",
-          type: "POST",
-          data: function (params) {
-            return {
-              searchTerm: params.term,
-            }
-          },
+          type: "POSt",
+          data: {searchTerm: params.term},
           success: function(data){
             console.log(data);
-            $("#icd10").html(data);
+            // $("#icd10").val(data);
                
           }
 

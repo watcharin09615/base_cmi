@@ -333,22 +333,23 @@
     // });
 
 
-    // $("#icd10").select2({
-    //   ajax: { 
-    //       url: "icd10.php",
-    //       data: function (params) {
-    //         var query = {
-    //           searchTerm: params.term,
-    //           type: 'public'
-    //         }
-    //         console.log(query);
-    //         return query;
+    $("#icd10").select2({
+    
+      ajax: { 
+          url: "icd10.php",
+          data: function (params) {
+            var query = {
+              searchTerm: params.term,
+              type: 'public'
+            }
+            console.log(query);
+            return query;
             
-    //       }
+          }
 
-    //   }
-    //   // Query parameters will be ?search=[term]&type=public
-    // })
+      }
+      // Query parameters will be ?search=[term]&type=public
+    })
 
     // $("#icd10").select2(function() {
     //     console.log(this.value);

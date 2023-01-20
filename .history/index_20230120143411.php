@@ -486,11 +486,7 @@
       ajax: { 
           url: "icd10.php",
           type: "POST",
-          data: function (params) {
-            return {
-              searchTerm: params.term,
-            }
-          },
+          data: {searchTerm: params.term},
           success: function(data){
             console.log(data);
             $("#icd10").html(data);

@@ -487,9 +487,10 @@
           url: "icd10.php",
           type: "POST",
           data: function (params) {
-            return {
+            var query = {
               searchTerm: params.term,
             }
+            return query;
           },
           success: function(data){
             console.log(data);

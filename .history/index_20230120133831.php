@@ -290,7 +290,7 @@
                   <div class="d-flex align-items-center">
                   <div class="col-sm-12">
                     <select class="form-select" id="icd10" aria-label="Default select example">
-                      
+                      <option value=""></option>
                     </select>
                   </div>
                   </div>
@@ -461,7 +461,8 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- jQuery -->
-
+  <script
+  src="https://code.jquery.com/jquery-3.6.3.js"></script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -481,30 +482,13 @@
   $( document ).ready(function(){
 
   $('.form-select').select2();
-
-  $("#icd10").select2({
-      ajax: { 
-          url: "icd10.php",
-          type: "POST",
-          data: function (params) {
-            return {
-              searchTerm: params.term,
-            }
-          },
-          success: function(data){
-            console.log(data);
-            $("#icd10").html(data);
-               
-          }
-
-      }
-      // Query parameters will be ?search=[term]&type=public
-    })
-
   });
   
   </script>
 
+
+
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 
 </html>

@@ -485,15 +485,18 @@
   $("#icd10").select2({
       ajax: { 
           url: "icd10.php",
-          type: "POST",
           data: function (params) {
-            return {
+            var query = {
               searchTerm: params.term,
             }
+            console.log(query);
+            return query;
+            
           },
           success: function(data){
+
             console.log(data);
-            $("#icd10").html(data);
+            $("#icd10").val(data);
                
           }
 

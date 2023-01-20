@@ -490,6 +490,7 @@
             return {
               searchTerm: params.term,
             }
+
           },
           success: function(data){
             console.log(data);
