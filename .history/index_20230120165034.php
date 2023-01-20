@@ -387,11 +387,12 @@
       ajax: { 
           url: "icd10.php",
           type: "post",
-          dataType:'json',
+          datatype:'json',
           delay: 250,
           data: function (params) {
-            return { searchTerm: params.term}
-            //console.log(query);
+          var query = { searchTerm: params.term}
+            console.log(query);
+            return query;
           },
           // success: function (data) {
           //     console.log(data);
@@ -399,8 +400,8 @@
           // }
           // ,
           processResults: function (response) {
-            //console.log(response)
              return {
+                  
                  results: response
              };
          },

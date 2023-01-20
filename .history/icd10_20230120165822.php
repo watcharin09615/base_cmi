@@ -29,7 +29,7 @@ $html .= "<option value=\"\"></option>\n";
 while ($row = pg_fetch_array($fetchData)) {    
     $html .=  '<option value="'.$row["code"].'">'.$row["code"].' '.$row["description"] .'</option>'."\n";
 
-    $data[] = array("id"=>$row['code'], "text"=>$row['code']." ".$row['description']);
+    $data[] = array("id"=>$row['code'], "text"=>$row['description']);
 }
 // echo $html;
 //var_dump($data);exit;

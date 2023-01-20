@@ -24,14 +24,12 @@ $data = array();
 $html = "";
 $html .= "<option value=\"\"></option>\n";
 
-//var_dump($fetchData);exit;
+
 
 while ($row = pg_fetch_array($fetchData)) {    
     $html .=  '<option value="'.$row["code"].'">'.$row["code"].' '.$row["description"] .'</option>'."\n";
 
-    $data[] = array("id"=>$row['code'], "text"=>$row['code']." ".$row['description']);
+    $data[] = array("id"=>$row['code'], "text"=>$row['description']);
 }
-// echo $html;
-//var_dump($data);exit;
-echo json_encode($data);
+echo $html;
 ?>
