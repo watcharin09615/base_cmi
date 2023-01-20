@@ -12,18 +12,20 @@ include 'condb.php';
 
 
    
-$fetchData = mysqli_query($con,"select id_department,department_name from department order by id_department"); 
+$fetchData = mysqli_query($con,"select code,description from fix_icd10 order by code limit 10"); 
  
 
 $data = array();
 // echo $search;
-
+$html = "";
+$html .= "<option value=\"\"></option>\n";
 
 //var_dump($fetchData);exit;
 
 while ($row = mysqli_fetch_array($fetchData)) {    
+    $html .=  '<option value="'.$row["code"].'">'.$row["code"].' '.$row["description"] .'</option>'."\n";
 
-    $data[] = array("id"=>$row['id_department'], "text"=>$row['department_name']);
+    $data[] = array("id"=>$row['code'], "text"=>$row['code']." ".$row['description']);
 }
 // echo $html;
 //var_dump($data);exit;

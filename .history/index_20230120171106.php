@@ -270,6 +270,10 @@
                   <div class="d-flex align-items-center">
                   <div class="col-sm-12">
                     <select class="form-select" id="department" aria-label="Default select example">
+                      <option selected="">Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
                     </select>
                   </div>
                   </div>
@@ -299,30 +303,32 @@
               <div class="card recent-sales overflow-auto">
 
                 <div class="card-body">
-                  <h5 class="card-title">ICD 9 </h5>
+                  <h5 class="card-title">ICD 9 <span>| Today</span></h5>
 
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Department</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        </th>
+                        <th scope="row"><a href="#">#2457</a></th>
                         <td>Brandon Jacob</td>
                         <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        
+                        <td>$64</td>
+                        <td><span class="badge bg-success">Approved</span></td>
                       </tr>
                       <tr>
                         <th scope="row"><a href="#">#2644</a></th>
                         <td>Raheem Lehner</td>
                         <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        
+                        <td>$165</td>
+                        <td><span class="badge bg-success">Approved</span></td>
                       </tr>
                     </tbody>
                   </table>
@@ -392,17 +398,16 @@
           //     $('#icd10').html(data);
           // }
           // ,
-        processResults: function (response) {
-          //console.log(response)
-            return {
-                results: response
-          };
-        },
-      cache: true
-    }
+          processResults: function (response) {
+            //console.log(response)
+             return {
+                 results: response
+             };
+         },
+         cache: true
+      }
       // Query parameters will be ?search=[term]&type=public
-  })
-
+    })
 
   
 
@@ -416,6 +421,11 @@
             return { searchTerm: params.term}
             //console.log(query);
           },
+          // success: function (data) {
+          //     console.log(data);
+          //     $('#icd10').html(data);
+          // }
+          // ,
           processResults: function (response) {
             //console.log(response)
              return {

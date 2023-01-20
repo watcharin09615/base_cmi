@@ -311,18 +311,18 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        </th>
+                        <th scope="row"><a href="#">#2457</a></th>
                         <td>Brandon Jacob</td>
                         <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        
+                        <td>$64</td>
+                        <td><span class="badge bg-success">Approved</span></td>
                       </tr>
                       <tr>
                         <th scope="row"><a href="#">#2644</a></th>
                         <td>Raheem Lehner</td>
                         <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        
+                        <td>$165</td>
+                        <td><span class="badge bg-success">Approved</span></td>
                       </tr>
                     </tbody>
                   </table>

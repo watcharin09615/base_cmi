@@ -311,9 +311,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">
-                        <input class="form-check-input" type="checkbox" id="gridCheck1">
-                        </th>
+                        <th scope="row"><a href="#">#2457</a></th>
                         <td>Brandon Jacob</td>
                         <td><a href="#" class="text-primary">At praesentium minu</a></td>
                         
