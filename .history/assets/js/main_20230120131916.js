@@ -320,7 +320,7 @@
 
   $( document ).ready(function() {
 
-    
+    $('.form-select').select2();
     // $('#department').select2( function (){
     //     $.ajax({
     //         type: "POST",
@@ -334,25 +334,19 @@
 
 
     $("#icd10").select2({
-    
-      ajax: { 
-          url: "assets/functionajax/icd10.php",
-          type: "post",
+
+        ajax: {
+          url: "assets/functionajax/icd10.php",/* Url ที่ต้องการส่งค่าไปประมวลผลการค้นข้อมูล*/
           dataType: 'json',
           delay: 250,
-          data: function (params) {
-              return {
-                  searchTerm: params.term // search term
-              };
-          },
-          processResults: function (response) {
-              return {
-                  results: response
-              };
-          },
-          cache: true
-      }
-    })
+          data: {data:this.value},
+          success: function(data){
+               
+            console.log(data);
+
+          }
+        },
+      });
 
     // $("#icd10").select2(function() {
     //     console.log(this.value);

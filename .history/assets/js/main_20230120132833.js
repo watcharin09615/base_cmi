@@ -336,7 +336,7 @@
     $("#icd10").select2({
     
       ajax: { 
-          url: "assets/functionajax/icd10.php",
+          url: "getData.php",
           type: "post",
           dataType: 'json',
           delay: 250,
@@ -352,7 +352,7 @@
           },
           cache: true
       }
-    })
+  })
 
     // $("#icd10").select2(function() {
     //     console.log(this.value);
