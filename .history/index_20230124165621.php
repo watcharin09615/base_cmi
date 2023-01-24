@@ -216,7 +216,8 @@
       },
     	success: function (data) {
         
-        
+        $('#table_icd9').html(data); 
+        $('.datatables').DataTable();
         let timerInterval
         Swal.fire({
           title: 'กรุณารอสักครู่',
@@ -228,8 +229,6 @@
             const b = Swal.getHtmlContainer().querySelector('b')
             timerInterval = setInterval(() => {
               b.textContent = (Swal.getTimerLeft()/1000).toFixed(0)
-              $('#table_icd9').html(data); 
-              $('.datatables').DataTable();
               $('#icd9_card').show();
             }, 1000)
           },

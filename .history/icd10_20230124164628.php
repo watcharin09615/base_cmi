@@ -12,7 +12,7 @@ include 'condb.php';
 if(!empty($_POST["searchTerm"])){ 
 
     $search = $_POST['searchTerm'];   
-    $fetchData = pg_query($conimed,"select replace(code,'.','')as\"code\",description from fix_icd10 where replace(lower(code),'.','') like  lower('%".$search."%')  or lower(description) like lower('%".$search."%') limit 10");
+    $fetchData = pg_query($conimed,"select replace(code,'.','')as\"code\",description from fix_icd10 where code COLLATE UTF8_GENERAL_CI like '%".$search."%' or description COLLATE UTF8_GENERAL_CI like '%".$search."%' limit 10");
     
 }else{ 
    
