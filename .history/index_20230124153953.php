@@ -442,15 +442,15 @@
         let timerInterval
         Swal.fire({
           title: 'กรุณารอสักครู่',
-          html: 'ดำเนินการเสร็จภายใน <b></b> วินาที',
+          html: 'ดำเนินการเสร็จภายใน <b></b> milliseconds.',
           timer: 2000,
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading()
             const b = Swal.getHtmlContainer().querySelector('b')
             timerInterval = setInterval(() => {
-              b.textContent = (Swal.getTimerLeft()/1000).toFixed(0)
-            }, 1000)
+              b.textContent = Swal.getTimerLeft()
+            }, 100)
           },
           willClose: () => {
             clearInterval(timerInterval)

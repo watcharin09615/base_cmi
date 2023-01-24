@@ -436,9 +436,7 @@
         department: department,
       },
     	success: function (data) {
-        
-        $('#table_icd9').html(data); 
-        $('.datatables').DataTable();
+
         let timerInterval
         Swal.fire({
           title: 'กรุณารอสักครู่',
@@ -449,7 +447,11 @@
             Swal.showLoading()
             const b = Swal.getHtmlContainer().querySelector('b')
             timerInterval = setInterval(() => {
-              b.textContent = (Swal.getTimerLeft()/1000).toFixed(0)
+              b.textContent = Swal.getTimerLeft()
+                $('#table_icd9').html(data); 
+                $('.datatables').DataTable();
+                $('#icd9_card').show();
+
             }, 1000)
           },
           willClose: () => {
@@ -462,8 +464,6 @@
           }
         })
         
-        $('#icd9_card').show();
-
     	},
     	error: function(error) {
            	console.log('Error: ' + error);

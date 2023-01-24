@@ -436,34 +436,34 @@
         department: department,
       },
     	success: function (data) {
+
+        let timerInterval = 2000
         
-        $('#table_icd9').html(data); 
-        $('.datatables').DataTable();
-        let timerInterval
         Swal.fire({
           title: 'กรุณารอสักครู่',
-          html: 'ดำเนินการเสร็จภายใน <b></b> วินาที',
+          html: 'ดำเนินการเสร็จภายใน <b>2</b> วินาที',
           timer: 2000,
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading()
             const b = Swal.getHtmlContainer().querySelector('b')
             timerInterval = setInterval(() => {
-              b.textContent = (Swal.getTimerLeft()/1000).toFixed(0)
+              b.textContent = Swal.getTimerLeft()
+                $('#table_icd9').html(data); 
+                $('.datatables').DataTable();
+                $('#icd9_card').show();
             }, 1000)
           },
           willClose: () => {
-            clearInterval(timerInterval)
+            clearInterval(timerInterval/1000)
           }
         }).then((result) => {
-          /* Read more about handling dismissals below */
+
           if (result.dismiss === Swal.DismissReason.timer) {
             console.log('I was closed by the timer')
           }
         })
         
-        $('#icd9_card').show();
-
     	},
     	error: function(error) {
            	console.log('Error: ' + error);
