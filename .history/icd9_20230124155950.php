@@ -21,7 +21,7 @@ if ($num > 0) {
 
 
    
-$fetchData = pg_query($conimed,"select replace(code,'.','')as\"code\",description from fix_icd9 order by code"); 
+$fetchData = pg_query($conimed,"select replace(code,'.','')as'code',description from fix_icd9 order by code"); 
 
 
 $data = array();
