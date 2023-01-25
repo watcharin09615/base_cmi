@@ -26,7 +26,7 @@ $fetchData = pg_query($conimed,"select replace(code,'.','')as\"code\",descriptio
 
 $data = array();
 // echo $search;
-
+var_dump($base);
 $html = "";
 
 $html .= "<tr>\n";
@@ -39,6 +39,7 @@ $html .= "<tr>\n";
     }else {
         $html .= "  <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_icd9\" value=\"\" >\n";
     }
+    $html .= "  <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_icd9\" value=\"\" >\n";
     $html .= "  </td>\n";
     $html .= "  <td>ไม่ระบุ</td>\n";
     $html .= "  <td>ไม่ระบุ</td>\n";
