@@ -32,8 +32,8 @@ $html .= "<tr>\n";
     $html .= "  <td>\n";
     $html .= "  <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_icd9\" value=\"\" >\n";
     $html .= "  </td>\n";
-    $html .= "  <td>ไม่ระบุ</td>\n";
-    $html .= "  <td>ไม่ระบุ</td>\n";
+    $html .= "  <td>ไม่มี</td>\n";
+    $html .= "  <td>ไม่มี</td>\n";
     $html .= "</tr>\n";
 
 
