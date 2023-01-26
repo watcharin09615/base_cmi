@@ -14,7 +14,7 @@
       <li class="nav-item">
         <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
-          <span>All Base</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
@@ -25,11 +25,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>All Base</h1>
+      <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">All Base</li>
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -216,7 +216,6 @@
       },
     	success: function (data) {
         
-        
         let timerInterval
         Swal.fire({
           title: 'กรุณารอสักครู่',
@@ -227,11 +226,12 @@
             Swal.showLoading()
             const b = Swal.getHtmlContainer().querySelector('b')
             timerInterval = setInterval(() => {
+
               $('#table_icd9').html(data); 
               $('.datatables').DataTable();
               $('#icd9_card').show();
 
-            }, 1000)
+            })
           },
           willClose: () => {
             clearInterval(timerInterval)

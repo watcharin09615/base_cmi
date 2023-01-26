@@ -14,7 +14,7 @@
       <li class="nav-item">
         <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
-          <span>All Base</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
@@ -25,11 +25,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>All Base</h1>
+      <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">All Base</li>
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -215,33 +215,35 @@
         department: department,
       },
     	success: function (data) {
+        $('#table_icd9').html(data); 
+        $(document).on("load","#table_icd9",function(){
+          $('.datatables').DataTable();
+          $('#icd9_card').show();
+                
+        });
         
-        
-        let timerInterval
-        Swal.fire({
-          title: 'กรุณารอสักครู่',
-          html: 'ระบบกำลังดำเนินการ',
-          timer: 1500,
-          timerProgressBar: true,
-          didOpen: () => {
-            Swal.showLoading()
-            const b = Swal.getHtmlContainer().querySelector('b')
-            timerInterval = setInterval(() => {
-              $('#table_icd9').html(data); 
-              $('.datatables').DataTable();
-              $('#icd9_card').show();
-
-            }, 1000)
-          },
-          willClose: () => {
-            clearInterval(timerInterval)
-          }
-        }).then((result) => {
-          /* Read more about handling dismissals below */
-          if (result.dismiss === Swal.DismissReason.timer) {
-            console.log('success');
-          }
-        })
+        // let timerInterval
+        // Swal.fire({
+        //   title: 'กรุณารอสักครู่',
+        //   html: 'ระบบกำลังดำเนินการ',
+        //   timerProgressBar: true,
+        //   didOpen: () => {
+        //     Swal.showLoading()
+        //     const b = Swal.getHtmlContainer().querySelector('b')
+        //     timerInterval = setInterval(() => {
+        //       b.textContent = (Swal.getTimerLeft()/1000).toFixed(0)
+              
+        //     }, 1000)
+        //   },
+        //   willClose: () => {
+        //     clearInterval(timerInterval)
+        //   }
+        // }).then((result) => {
+        //   /* Read more about handling dismissals below */
+        //   if (result.dismiss === Swal.DismissReason.timer) {
+        //     console.log('success');
+        //   }
+        // })
         
         
 
