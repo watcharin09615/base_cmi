@@ -5,7 +5,7 @@ include 'condb.php';
 $department = $_POST["department"];
 $icd10 = $_POST["icd10"];
 
-$query = "select icd9 from base where department = '$department' and icd10 = '$icd10'  " or die("Error:" . mysqli_error($con));
+$query = "select icd9 from base where active = '1' and department = '$department' and icd10 = '$icd10'  " or die("Error:" . mysqli_error($con));
 $result = mysqli_query($con, $query);
 
 
@@ -27,43 +27,28 @@ $fetchData = pg_query($conimed,"select replace(code,'.','')as\"code\",descriptio
 $data = array();
 // echo $search;
 
-$sqlnon = "select department from base inner join department on base.department = department.id_department where icd9 = '' and icd10 = '$icd10'  ORDER BY department.id_department ASC" or die("Error:" . mysqli_error($con));
-$resultnon = mysqli_query($con, $sqlnon);
-$numnon = mysqli_num_rows ($resultnon);
-
 $html = "";
 
 $html .= "<tr>\n";
-$html .= "  <td>\n";
+    $html .= "  <td>\n";
 
 
-if (in_array("",$base)) {
-    $html .= "  <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_icd9\" value=\"\" checked>\n";
+    if (in_array("",$base)) {
+        $html .= "  <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_icd9\" value=\"\" checked>\n";
 
-}else {
-    $html .= "  <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_icd9\" value=\"\" >\n";
-}
-$html .= "  </td>\n";
-$html .= "  <td>ไม่ระบุ</td>\n";
-$html .= "  <td>ไม่ระบุ</td>\n";
-$html .= "  <td>";
-
-    if ($numnon > 0) {
-        
-        while($row2 = mysqli_fetch_assoc($resultnon)){
-            $html .= $row2["department_name"]." , ";
-        };
     }else {
-        $html .= "ไม่มีแผนกร่วม";
+        $html .= "  <input class=\"form-check-input\" type=\"checkbox\" id=\"checkbox_icd9\" value=\"\" >\n";
     }
-    
-$html .= "</td>\n";
-$html .= "</tr>\n";
+    $html .= "  </td>\n";
+    $html .= "  <td>ไม่ระบุ</td>\n";
+    $html .= "  <td>ไม่ระบุ</td>\n";
+    $html .= "  <td>ไม่ระบุ</td>\n";
+    $html .= "</tr>\n";
 
 
 while ($row = pg_fetch_array($fetchData)) {    
 
-    $sqldeaprtment = "select department_name from base inner join department on base.department = department.id_department where icd9 = '".$row['code']."' and icd10 = '$icd10'  ORDER BY department.id_department ASC" or die("Error:" . mysqli_error($con));
+    $sqldeaprtment = "select department from base where active = '1' and icd9 = '".$row['code']."' and icd10 = '$icd10'  " or die("Error:" . mysqli_error($con));
     $resultdepart = mysqli_query($con, $sqldeaprtment);
     $numdepart = mysqli_num_rows ($resultdepart);
 
@@ -92,18 +77,17 @@ while ($row = pg_fetch_array($fetchData)) {
     $html .= "  <td>";
 
     if ($numdepart > 0) {
-        while($row1 = mysqli_fetch_assoc($resultdepart)){
-            $html .= $row1['department_name']." , ";
+        
+        while($row1 = mysqli_fetch_assoc($result)){
+            $html .= $row1["dapartment"]." , ";
         };
     }else {
         $html .= "ไม่มีแผนกร่วม";
     }
     
-    $html .= "</td>\n";
+    "</td>\n";
     $html .= "</tr>\n";
 }
-pg_close($conimed);
-mysqli_close($con);
 
 
 echo $html;

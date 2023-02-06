@@ -1,5 +1,4 @@
 <?php
-
 function get_client_ip() {
     $ipaddress = '';
     if (getenv('HTTP_CLIENT_IP'))
@@ -18,7 +17,9 @@ function get_client_ip() {
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-
-echo 'User Real IP  '.get_client_ip();
-
+$ipaddress = get_client_ip();
+echo "1";
+echo $ipaddress;
+echo "2";
+print_r($ipaddress);
 ?>

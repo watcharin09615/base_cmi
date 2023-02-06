@@ -12,7 +12,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
           <span>All Base</span>
         </a>
@@ -197,40 +197,58 @@
 
 
   });
+
+
   
   
 
   $(document).on("change",".form-select",function() {
     var icd10 = document.getElementById("icd10").value;
     var department = document.getElementById("department").value;
-    
+
     
     if (icd10 != "" && department != "") {
-      Swal.close()
-      Swal.showLoading();
-      $.ajax({
-    	type: 'POST',
-    	url: 'icd9.php',
-      data: {
-        icd10: icd10,
-        department: department,
-      },
-    	success: function (data) {
-        $('#table_icd9').html(data); 
-        $('.datatables').DataTable();
-        $('#icd9_card').show();
-  
+      
         
-            
-    	},
-      complete: function(){
-        Swal.close()
-
-      },
-    	error: function(error) {
-           	console.log('Error: ' + error);
-    	}
-      });
+        
+        let timerInterval
+        Swal.fire({
+          title: 'กรุณารอสักครู่',
+          html: 'ระบบกำลังดำเนินการ',
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+            $.ajax({
+            type: 'POST',
+            url: 'icd9.php',
+            data: {
+              icd10: icd10,
+              department: department,
+            },
+            success: function (data) {
+              $('#table_icd9').html(data); 
+              $('.datatables').DataTable();
+              $('#icd9_card').show();
+            },
+            error: function(error) {
+                  console.log('Error: ' + error);
+            }
+            });
+            }, 1000)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('success');
+          }
+        })
+    	
     }
    
   

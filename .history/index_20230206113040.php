@@ -12,7 +12,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
           <span>All Base</span>
         </a>
@@ -203,11 +203,10 @@
   $(document).on("change",".form-select",function() {
     var icd10 = document.getElementById("icd10").value;
     var department = document.getElementById("department").value;
-    
+
     
     if (icd10 != "" && department != "") {
-      Swal.close()
-      Swal.showLoading();
+      Swal.showLoading({});
       $.ajax({
     	type: 'POST',
     	url: 'icd9.php',
@@ -223,10 +222,6 @@
         
             
     	},
-      complete: function(){
-        Swal.close()
-
-      },
     	error: function(error) {
            	console.log('Error: ' + error);
     	}

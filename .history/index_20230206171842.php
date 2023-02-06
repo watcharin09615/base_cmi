@@ -203,10 +203,9 @@
   $(document).on("change",".form-select",function() {
     var icd10 = document.getElementById("icd10").value;
     var department = document.getElementById("department").value;
-    
+
     
     if (icd10 != "" && department != "") {
-      Swal.close()
       Swal.showLoading();
       $.ajax({
     	type: 'POST',

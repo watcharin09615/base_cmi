@@ -19,6 +19,6 @@ function get_client_ip() {
     return $ipaddress;
 }
 
-echo 'User Real IP  '.get_client_ip();
+echo 'User Real IP - '.get_client_ip();
 
 ?>

@@ -206,7 +206,6 @@
     
     
     if (icd10 != "" && department != "") {
-      Swal.close()
       Swal.showLoading();
       $.ajax({
     	type: 'POST',

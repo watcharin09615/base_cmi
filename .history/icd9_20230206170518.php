@@ -27,7 +27,7 @@ $fetchData = pg_query($conimed,"select replace(code,'.','')as\"code\",descriptio
 $data = array();
 // echo $search;
 
-$sqlnon = "select department from base inner join department on base.department = department.id_department where icd9 = '' and icd10 = '$icd10'  ORDER BY department.id_department ASC" or die("Error:" . mysqli_error($con));
+$sqlnon = "select department from base inner join department on base.department = department.id_department where icd9 = '' and icd10 = '$icd10'  " or die("Error:" . mysqli_error($con));
 $resultnon = mysqli_query($con, $sqlnon);
 $numnon = mysqli_num_rows ($resultnon);
 
@@ -63,7 +63,7 @@ $html .= "</tr>\n";
 
 while ($row = pg_fetch_array($fetchData)) {    
 
-    $sqldeaprtment = "select department_name from base inner join department on base.department = department.id_department where icd9 = '".$row['code']."' and icd10 = '$icd10'  ORDER BY department.id_department ASC" or die("Error:" . mysqli_error($con));
+    $sqldeaprtment = "select department from base inner join department on base.department = department.id_department where icd9 = '".$row['code']."' and icd10 = '$icd10'  " or die("Error:" . mysqli_error($con));
     $resultdepart = mysqli_query($con, $sqldeaprtment);
     $numdepart = mysqli_num_rows ($resultdepart);
 

@@ -26,11 +26,11 @@
     $ip = get_client_ip();
    
 
-    $check = "SELECT * FROM base WHERE department = '$department' and icd10 = '$icd10' and icd9 = '$icd9'";
+    $check = "SELECT * FROM base WHERE active = '1' and department = '$department' and icd10 = '$icd10' and icd9 = '$icd9'";
     $result = mysqli_query($con, $check) or die(mysqli_error($con));
    
     $num=mysqli_num_rows($result);
-
+    echo $for;
 
     if ($for == "1") {
         if ($num == 0) {
@@ -40,7 +40,7 @@
             
             if ($con->query($sql1) === TRUE) {
                 $last_id = $con->insert_id;
-                $sql2 = "INSERT INTO history(transition, department, icd10, icd9, ip) VALUES ('Add','$department','$icd10','$icd9','$ip')";
+                $sql2 = "INSERT INTO history(id_base, ip, transition) VALUES ('$last_id','$ip','1')";
                 $result2 = mysqli_query($con, $sql2) or die ("Error in query: $sql2 " . mysqli_error($con));
                 mysqli_close($con);
                 echo 1;
@@ -52,17 +52,19 @@
             echo 0;
         }
     }elseif ($for == "0") {
+        echo 4;
        if ($num > 0) {
-        $sql1 = "DELETE FROM base WHERE department = '$department' and icd10 = '$icd10' and icd9 = '$icd9'";
+        echo 2;
+        $sql3 = "SELECT id_base WHERE active = '1' and department = '$department' and icd10 = '$icd10' and icd9 = '$icd9'";
+        $last = $con->query($sql3);
+        $last_id = $last->fetch_assoc();
+        echo($last_id["id_base"]);
+        echo 3;
+        $sql1 = "UPDATE base SET active = '0' WHERE active = '1' and department = '$department' and icd10 = '$icd10' and icd9 = '$icd9'";
         // $result1 = mysqli_query($con, $sql1) or die ("Error in query: $sql1 " . mysqli_error($con));
         if ($con->query($sql1) === TRUE) {
-    
-            while($row = $result->fetch_assoc()) {
-                $last_id = $row["id_base"];
-            }
-
-
-            $sql2 = "INSERT INTO history(transition, department, icd10, icd9, ip) VALUES ('Delete','$department','$icd10','$icd9','$ip')";
+            
+            $sql2 = "INSERT INTO history(id_base, ip, transition) VALUES ('$last_id','$ip','0')";
             $result2 = mysqli_query($con, $sql2) or die ("Error in query: $sql2 " . mysqli_error($con));
             mysqli_close($con);
             echo 1;

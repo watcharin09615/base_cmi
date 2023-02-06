@@ -12,7 +12,7 @@ include 'condb.php';
 
 
    
-$fetchData = mysqli_query($con,"select * from department order by id_department"); 
+$fetchData = mysqli_query($con,"select department_name from department order by id_department"); 
  
 
 $data = array();
